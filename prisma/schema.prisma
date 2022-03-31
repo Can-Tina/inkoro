@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("DATABASE_SHADOW")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  tattoos   Tattoo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tattoo {
+  id        Int      @id @default(autoincrement())
+  image     String
+  users     User[]
+  styles    Style[]
+  colours   Colour[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Style {
+  id        Int      @id @default(autoincrement())
+  name      String
+  tattoos   Tattoo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Colour {
+  id        Int      @id @default(autoincrement())
+  name      String
+  tattoos   Tattoo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
