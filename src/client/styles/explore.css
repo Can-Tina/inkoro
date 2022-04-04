@@ -1,0 +1,13 @@
+.explore-container {
+    display: grid;
+    grid-template-columns: 200px auto;
+}
+
+img {
+    width: 400px;
+}
+
+.save-tattoo {
+    display: block;
+    width: 400px;
+}

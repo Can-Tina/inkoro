@@ -1,9 +1,14 @@
 import { React } from 'react';
+import Header from './pages/Header';
 import Saved from './pages/Saved';
+//import Explore from './pages/Explore';
 
 function App() {
   return (
-    <Saved />
+    <div>
+      <Header />
+      <Saved />
+    </div>
   );
 }
 

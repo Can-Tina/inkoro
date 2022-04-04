@@ -1,26 +1,28 @@
-const { prisma } = require('@prisma/client')
+const { prisma } = require('../utils/prisma')
 const axios = require('axios')
 
 const { EXTERNAL_API } = require('../config')
 
-
-const getTattoosFromAPI = async () => {
+const getTattoosFromAPI = async (req, res) => {
     const rawTattooData = await axios.get(EXTERNAL_API)
     const tattoos = []
-    for (let i = 0; i < rawTattooData.images_results.length; i++) {
-        tattoos[i].image = rawTattooData.images_results[i].original
+    for (let i = 0; i < rawTattooData.data.images_results.length; i++) {
+        tattoos[i] = rawTattooData.data.images_results[i].original
     }
-    tattoos.forEach(async tattoo => {
-        const createdTattoo = await prisma.tattoo.create({
-            data: {
-                image: tattoo.image,
-                styles: {
-                    connectOrCreate: 'Black and White'
+    console.log(tattoos.length)
+    tattoos.forEach(async tattooData => {
+        try {
+            const createdTattoo = await prisma.tattoo.create({
+                data: {
+                    image: tattooData
                 }
-            }
-        })
-        console.log(createdTattoo)
+            })
+            console.log(createdTattoo)
+        } catch (error) {
+            console.log(error)
+        }
     })
+    res.json('Complete')
 }
 
 module.exports = {
