@@ -11,8 +11,10 @@
     background-color: #6D0D87;
 }
 
-.header-item {
+.header-item,
+.link {
     color: whitesmoke;
+    text-decoration: none;
 }
 
 .title{
