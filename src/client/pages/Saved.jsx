@@ -39,7 +39,7 @@ const Saved = () => {
         console.log(e.target.id)
         const UNSAVE_TATTOO_URL = GET_TATTOOS_URL + 'disconnect/' + e.target.id + '/1'
         await unsaveTattoo(UNSAVE_TATTOO_URL)
-        if(refresh === false) {
+        if (refresh === false) {
             setRefresh(true)
         } else {
             setRefresh(false)
@@ -58,17 +58,19 @@ const Saved = () => {
 
     return (
         <div className='saved-container'>
-            <h1>My Saved Tattoos</h1>
-            {tattoos &&
-                tattoos.map((tattoo, index) => {
-                    return (
-                        <div key={index}>
-                            <img src={tattoo.image} alt="tattoo" />
-                            <button className='unsave-tattoo' id={tattoo.id} onClick={e => handleUnsaveTattoo(e)}>Unsave</button>
-                        </div>
-                    )
-                })
-            }
+            <h1 className='saved-title'>My Saved Tattoos</h1>
+            <div className='saved-main'>
+                {tattoos &&
+                    tattoos.map((tattoo, index) => {
+                        return (
+                            <div key={index}>
+                                <img src={tattoo.image} alt="tattoo" />
+                                <button className='unsave-tattoo' id={tattoo.id} onClick={e => handleUnsaveTattoo(e)}>Unsave</button>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

@@ -1,4 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Sansita+Swashed');
+
 .header-container { 
-    height: 100px;
+    height: 90px;
+    display: grid;
+    grid-template-columns: auto max-content max-content;
+    gap: 20px;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
     background-color: #6D0D87;
+}
+
+.header-item {
+    color: whitesmoke;
+}
+
+.title{
+    font-family: 'Sansita Swashed';
 }
