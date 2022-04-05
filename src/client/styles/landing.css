@@ -1,4 +1,21 @@
 .landing-container {
+    padding-top: 70px;
+    height: 100vh;
     text-align: center;
     font-size: xx-large;
+    background: rgb(109,13,135);
+background: linear-gradient(153deg, rgba(109,13,135,1) 0%, rgba(210,98,85,1) 50%, rgba(225,211,70,1) 100%);
+    color: whitesmoke;
+}
+
+.landing-start {
+    margin-top: 200px;
+}
+
+.landing-container h1 {
+    margin-top: 0px;
+}
+
+.here {
+    text-decoration: underline;
 }

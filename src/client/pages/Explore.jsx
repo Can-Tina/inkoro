@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { GET_TATTOOS_URL } from '../config';
+import Header from './Header';
 import './../styles/explore.css'
 
 /*const dummyTattoos = [
@@ -51,64 +52,68 @@ const Explore = () => {
     }
 
     return (
-        <div className='explore-container'>
-            <div className='filters-container'>
-                <div className='styles-container'>
-                    <p>Styles</p>
-                    <div className='style-box'>
-                        <input type='checkbox' id='old-school' name='old-school' value='Old School' />
-                        <label htmlFor='old-school'>Old School</label>
+        <>  
+            <Header />
+            <div className='explore-container'>
+                <div className='filters-container'>
+                    <div className='styles-container'>
+                        <p>Styles</p>
+                        <div className='style-box'>
+                            <input type='checkbox' id='old-school' name='old-school' value='Old School' />
+                            <label htmlFor='old-school'>Old School</label>
+                        </div>
+                        <div className='style-box'>
+                            <input type='checkbox' id='new-school' name='new-school' value='New School' />
+                            <label htmlFor='new-school'>New School</label>
+                        </div>
+                        <div className='style-box'>
+                            <input type='checkbox' id='portrait' name='portrait' value='Portrait' />
+                            <label htmlFor='portrait'>Portrait</label>
+                        </div>
+                        <div className='style-box'>
+                            <input type='checkbox' id='geometric' name='geometric' value='Geometric' />
+                            <label htmlFor='geometric'>Geometric</label>
+                        </div>
+                        <div className='style-box'>
+                            <input type='checkbox' id='japanese' name='japanese' value='Japanese' />
+                            <label htmlFor='japanese'>Japanese</label>
+                        </div>
+                        <div className='style-box'>
+                            <input type='checkbox' id='realism' name='realism' value='Realism' />
+                            <label htmlFor='realism'>Realism</label>
+                        </div>
                     </div>
-                    <div className='style-box'>
-                        <input type='checkbox' id='new-school' name='new-school' value='New School' />
-                        <label htmlFor='new-school'>New School</label>
-                    </div>
-                    <div className='style-box'>
-                        <input type='checkbox' id='portrait' name='portrait' value='Portrait' />
-                        <label htmlFor='portrait'>Portrait</label>
-                    </div>
-                    <div className='style-box'>
-                        <input type='checkbox' id='geometric' name='geometric' value='Geometric' />
-                        <label htmlFor='geometric'>Geometric</label>
-                    </div>
-                    <div className='style-box'>
-                        <input type='checkbox' id='japanese' name='japanese' value='Japanese' />
-                        <label htmlFor='japanese'>Japanese</label>
-                    </div>
-                    <div className='style-box'>
-                        <input type='checkbox' id='realism' name='realism' value='Realism' />
-                        <label htmlFor='realism'>Realism</label>
+                    <div className='colours-container'>
+                        <p>Colours</p>
+                        <div className='colour-box'>
+                            <input type='checkbox' id='colour' name='colour' value='Colour' />
+                            <label htmlFor='colour'>Colour</label>
+                        </div>
+                        <div className='colour-box'>
+                            <input type='checkbox' id='black-and-white' name='black-and-white' value='Black and White' />
+                            <label htmlFor='black-and-white'>Black and White</label>
+                        </div>
+                        <div className='colour-box'>
+                            <input type='checkbox' id='lineart' name='lineart' value='Lineart' />
+                            <label htmlFor='lineart'>Lineart</label>
+                        </div>
                     </div>
                 </div>
-                <div className='colours-container'>
-                    <p>Colours</p>
-                    <div className='colour-box'>
-                        <input type='checkbox' id='colour' name='colour' value='Colour' />
-                        <label htmlFor='colour'>Colour</label>
-                    </div>
-                    <div className='colour-box'>
-                        <input type='checkbox' id='black-and-white' name='black-and-white' value='Black and White' />
-                        <label htmlFor='black-and-white'>Black and White</label>
-                    </div>
-                    <div className='colour-box'>
-                        <input type='checkbox' id='lineart' name='lineart' value='Lineart' />
-                        <label htmlFor='lineart'>Lineart</label>
-                    </div>
+                <div className='explore-main'>
+                    {tattoos &&
+                        tattoos.map((tattoo, index) => {
+                            return (
+                                <div className='img-box' key={index}>
+                                    <img src={tattoo.image} alt="tattoo" className='image' />
+                                    <button className='save-tattoo' id={tattoo.id} onClick={e => handleSaveTattoo(e)}>Save</button>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
-            <div className='explore-main'>
-                {tattoos &&
-                    tattoos.map((tattoo, index) => {
-                        return (
-                            <div className='img-box' key={index}>
-                                <img src={tattoo.image} alt="tattoo" className='image' />
-                                <button className='save-tattoo' id={tattoo.id} onClick={e => handleSaveTattoo(e)}>Save</button>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        </div>
+        </>
+
     )
 }
 

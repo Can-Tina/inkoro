@@ -8,7 +8,6 @@ import Landing from './pages/Landing';
 function App() {
   return (
     <div>
-      <Header />
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/explore' element={<Explore />} />

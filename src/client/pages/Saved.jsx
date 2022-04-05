@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { GET_USER_TATTOOS_URL, GET_TATTOOS_URL } from '../config';
+import Header from './Header';
 import '../styles/saved.css'
 
 /*const dummyTattoos = [
@@ -57,21 +58,24 @@ const Saved = () => {
     }, [refresh])
 
     return (
-        <div className='saved-container'>
-            <h1 className='saved-title'>My Saved Tattoos</h1>
-            <div className='saved-main'>
-                {tattoos &&
-                    tattoos.map((tattoo, index) => {
-                        return (
-                            <div key={index}>
-                                <img src={tattoo.image} alt="tattoo" />
-                                <button className='unsave-tattoo' id={tattoo.id} onClick={e => handleUnsaveTattoo(e)}>Unsave</button>
-                            </div>
-                        )
-                    })
-                }
+        <>
+            <Header />
+            <div className='saved-container'>
+                <h1 className='saved-title'>My Saved Tattoos</h1>
+                <div className='saved-main'>
+                    {tattoos &&
+                        tattoos.map((tattoo, index) => {
+                            return (
+                                <div key={index}>
+                                    <img src={tattoo.image} alt="tattoo" />
+                                    <button className='unsave-tattoo' id={tattoo.id} onClick={e => handleUnsaveTattoo(e)}>Unsave</button>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
