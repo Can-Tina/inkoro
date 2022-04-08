@@ -1,7 +1,11 @@
 const { prisma } = require('../utils/prisma');
 
 const getAllTattoos = async (req, res) => {
-    const tattoos = await prisma.tattoo.findMany({})
+    const tattoos = await prisma.tattoo.findMany({
+        include: {
+            users: true
+        }
+    })
     res.json({ data: tattoos });
 }
 

@@ -24,3 +24,10 @@ img {
     width: 200px;
     margin-bottom: 20px;
 }
+
+button {
+    background-color: #d26255;
+    border: none;
+    color: white;
+    height: 25px
+}

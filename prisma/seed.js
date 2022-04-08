@@ -9,7 +9,6 @@ async function seed() {
             password: '123'
         }
     })
-    console.log(user)
 }
 
 seed()

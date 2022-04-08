@@ -29,7 +29,6 @@ const Explore = () => {
         const getTattoosFromDB = async () => {
             const res = await fetch(GET_TATTOOS_URL)
             const fetchedTattoos = await res.json()
-            console.log(fetchedTattoos)
             setTattoos(fetchedTattoos.data)
         }
         getTattoosFromDB()
@@ -46,7 +45,6 @@ const Explore = () => {
 
     const handleSaveTattoo = (e) => {
         e.preventDefault()
-        console.log(e.target.id)
         const SAVE_TATTOO_URL = GET_TATTOOS_URL + 'connect/' + e.target.id + '/1'
         saveTattoo(SAVE_TATTOO_URL)
     }

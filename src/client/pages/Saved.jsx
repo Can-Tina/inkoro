@@ -37,7 +37,6 @@ const Saved = () => {
 
     const handleUnsaveTattoo = async (e) => {
         e.preventDefault()
-        console.log(e.target.id)
         const UNSAVE_TATTOO_URL = GET_TATTOOS_URL + 'disconnect/' + e.target.id + '/1'
         await unsaveTattoo(UNSAVE_TATTOO_URL)
         if (refresh === false) {
@@ -51,7 +50,6 @@ const Saved = () => {
         const getTattoosFromDB = async () => {
             const res = await fetch(GET_USER_TATTOOS_URL)
             const fetchedTattoos = await res.json()
-            console.log(fetchedTattoos)
             setTattoos(fetchedTattoos.data)
         }
         getTattoosFromDB()
