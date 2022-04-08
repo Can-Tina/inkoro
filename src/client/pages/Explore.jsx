@@ -41,6 +41,13 @@ const Explore = () => {
                 'Content-Type': 'application/json'
             }
         })
+        const getTattoosFromDB = async () => {
+            const res = await fetch(GET_TATTOOS_URL)
+            const fetchedTattoos = await res.json()
+            setTattoos(fetchedTattoos.data)
+        }
+        await getTattoosFromDB()
+        console.log(tattoos)
     }
 
     const handleSaveTattoo = (e) => {
@@ -50,7 +57,7 @@ const Explore = () => {
     }
 
     return (
-        <>  
+        <>
             <Header />
             <div className='explore-container'>
                 <div className='filters-container'>
@@ -103,7 +110,12 @@ const Explore = () => {
                             return (
                                 <div className='img-box' key={index}>
                                     <img src={tattoo.image} alt="tattoo" className='image' />
-                                    <button className='save-tattoo' id={tattoo.id} onClick={e => handleSaveTattoo(e)}>Save</button>
+                                    {tattoo.users.length === 0 &&
+                                        <button className='save-tattoo' id={tattoo.id} onClick={e => handleSaveTattoo(e)}>Save</button>
+                                    }
+                                    {tattoo.users.length > 0 &&
+                                        <button className='saved-tattoo' id={tattoo.id}>Saved</button>
+                                    }
                                 </div>
                             )
                         })

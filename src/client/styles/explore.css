@@ -20,14 +20,23 @@ img {
     width: 200px;
 }
 
-.save-tattoo {
+.save-tattoo,
+.saved-tattoo {
     width: 200px;
     margin-bottom: 20px;
 }
 
-button {
-    background-color: #d26255;
+.save-tattoo,
+.saved-tattoo {
     border: none;
     color: white;
     height: 25px
+}
+
+.save-tattoo {
+    background-color: #961e60;
+}
+
+.saved-tattoo {
+    background-color: #d26255;
 }
