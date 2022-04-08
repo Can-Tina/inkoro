@@ -4,4 +4,5 @@ This is an app designed to help people find their perfect tattoos. It utilises a
 
 ### First run `npm ci` to install all dependencies
 ### Then run `npm run devstart` to launch the app
+### In insomnia, create a post request with the link `http://localhost:4000/init/` to get all the tattoos
 ### Open up [http://localhost:3000](http://localhost:3000) in your browser to view it
