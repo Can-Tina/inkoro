@@ -9,7 +9,6 @@ const getTattoosFromAPI = async (req, res) => {
     for (let i = 0; i < rawTattooData.data.images_results.length; i++) {
         tattoos[i] = rawTattooData.data.images_results[i].original
     }
-    console.log(tattoos.length)
     tattoos.forEach(async tattooData => {
         try {
             const createdTattoo = await prisma.tattoo.create({
@@ -17,7 +16,6 @@ const getTattoosFromAPI = async (req, res) => {
                     image: tattooData
                 }
             })
-            console.log(createdTattoo)
         } catch (error) {
             console.log(error)
         }

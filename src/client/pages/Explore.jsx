@@ -29,7 +29,6 @@ const Explore = () => {
         const getTattoosFromDB = async () => {
             const res = await fetch(GET_TATTOOS_URL)
             const fetchedTattoos = await res.json()
-            console.log(fetchedTattoos)
             setTattoos(fetchedTattoos.data)
         }
         getTattoosFromDB()
@@ -42,17 +41,23 @@ const Explore = () => {
                 'Content-Type': 'application/json'
             }
         })
+        const getTattoosFromDB = async () => {
+            const res = await fetch(GET_TATTOOS_URL)
+            const fetchedTattoos = await res.json()
+            setTattoos(fetchedTattoos.data)
+        }
+        await getTattoosFromDB()
+        console.log(tattoos)
     }
 
     const handleSaveTattoo = (e) => {
         e.preventDefault()
-        console.log(e.target.id)
         const SAVE_TATTOO_URL = GET_TATTOOS_URL + 'connect/' + e.target.id + '/1'
         saveTattoo(SAVE_TATTOO_URL)
     }
 
     return (
-        <>  
+        <>
             <Header />
             <div className='explore-container'>
                 <div className='filters-container'>
@@ -105,7 +110,12 @@ const Explore = () => {
                             return (
                                 <div className='img-box' key={index}>
                                     <img src={tattoo.image} alt="tattoo" className='image' />
-                                    <button className='save-tattoo' id={tattoo.id} onClick={e => handleSaveTattoo(e)}>Save</button>
+                                    {tattoo.users.length === 0 &&
+                                        <button className='save-tattoo' id={tattoo.id} onClick={e => handleSaveTattoo(e)}>Save</button>
+                                    }
+                                    {tattoo.users.length > 0 &&
+                                        <button className='saved-tattoo' id={tattoo.id}>Saved</button>
+                                    }
                                 </div>
                             )
                         })
