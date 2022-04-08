@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-###First run `npm ci to` install all dependencies
+### First run `npm ci to` install all dependencies
 
 ## Available Scripts
 
